@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 struct Process {
-    int pid;        // Process ID
-    int bt;         // Burst Time
-    int priority;   // Priority
-    int wt;         // Waiting Time
-    int tat;        // Turnaround Time
+    int pid;        
+    int bt;         
+    int priority;   
+    int wt;         
+    int tat;        
 };
 
 int main() {
@@ -16,7 +16,7 @@ int main() {
 
     struct Process p[n];
 
-    // Input
+
     for (int i = 0; i < n; i++) {
         p[i].pid = i + 1;
 
@@ -27,7 +27,6 @@ int main() {
         scanf("%d", &p[i].priority);
     }
 
-    // Sort processes by priority (descending)
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
             if (p[j].priority > p[i].priority) {
@@ -38,18 +37,18 @@ int main() {
         }
     }
 
-    // Calculate Waiting Time
+  
     p[0].wt = 0; // First process waits 0
     for (int i = 1; i < n; i++) {
         p[i].wt = p[i - 1].wt + p[i - 1].bt;
     }
 
-    // Calculate Turnaround Time
+   
     for (int i = 0; i < n; i++) {
         p[i].tat = p[i].wt + p[i].bt;
     }
 
-    // Output
+    
     printf("\n--- Highest Priority First Scheduling ---\n");
     printf("PID\tBT\tPriority\tWT\tTAT\n");
 
@@ -60,4 +59,5 @@ int main() {
 
     return 0;
 }
+
 
